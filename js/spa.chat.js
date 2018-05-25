@@ -18,6 +18,21 @@ spa.chat = (function() {
         }
     }
     configModule = function (input_map) {
-
+        spa.util.setConfigMap({
+            input_map,
+            settable_map: configMap.settable_map,
+            config_map: configMap
+        });
+        return true;
+    }
+    initModule = function ( $container ) {
+        $container.html( configMap.main_html );
+        stateMap.$container = $container;
+        setJqueryMap();
+        return true;
+    }
+    return {
+        configModule,
+        initModule
     }
 }())
